@@ -1,0 +1,61 @@
+//output:../03_component.html, doctype:strict
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    title Title
+    link(rel='stylesheet' href='css/bootstrap.min.css')
+    style.
+      .completed{
+        color: #8ed1d4;
+        /*com+shift+H*/
+        text-decoration: line-through;
+      }
+  body
+    nav.navbar.navbar-default.navbar-static-top
+    #app.container
+      h4(style="text-align: center") {{message}}
+      .row
+        .col-md-8.col-md-offset-2
+          .panel.panel-default
+            .panel-heading Welcome Vue js 2.0 Tutorial
+            .panel-body
+              //- h1 {{ message }}
+              //- input.form-control(type="text",v-model='message')
+              //- 數據雙向綁定
+              
+              h1 My todos {{todoCount}} 則
+              todo-items(v-bind:todos="todos")
+              todo-form(:todos="todos")
+              //- v-bind:todos簡寫
+    
+    script#todo-items-template(type="text/x-template")
+      .list-group
+        li.list-group-item(
+          v-for="(todo, index) in todos"
+          v-bind:class="{'completed' : todo.completed}") {{todo.title}}
+          //-            要加上的類別    冒號後面是條件
+          
+          button.btn.btn-sm.btn-warning(
+            v-on:click="deleteTodo(index)" style="float:right") Delete
+          button.btn.btn-sm.pull-right(
+            v-on:click="toggleCompletion(todo)"
+            v-bind:class="[todo.completed ? 'btn-danger':'btn-success']"
+            ) {{ todo.completed ? 'Undo':'Completed' }}
+            //-            三元運算子要加中括號
+          div(style="clear:both;")
+          
+    script#todo-add-form-template(type="text/x-template")
+      form(v-on:submit.prevent="addTodo(newTodo)")
+        .form-group
+          input.form-control(
+            v-model="newTodo.title" type="text" placeholder="Add a new todo")
+        .form-group
+          button.btn.btn-success(type="submit") Add Todo
+        //-事件綁定       
+    
+
+    script(src='js/vue.min.js')
+    script(src='js/03_component.js')
+    
+      
