@@ -30,14 +30,14 @@
       </div>
     </div>
     <script id="todo-items-template" type="text/x-template">
-      <div class="list-group">
+      <ul class="list-group">
         <li v-for="(todo, index) in todos" v-bind:class="{'completed' : todo.completed}" class="list-group-item">{{todo.title}}
           <button v-on:click="deleteTodo(index)" style="float:right" class="btn btn-sm btn-warning">Delete</button>
           <button v-on:click="toggleCompletion(todo)" v-bind:class="[todo.completed ? 'btn-danger':'btn-success']" class="btn btn-sm pull-right">{{ todo.completed ? 'Undo':'Completed' }}
           </button>
           <div style="clear:both;"></div>
         </li>
-      </div>
+      </ul>
     </script>
     <script id="todo-add-form-template" type="text/x-template">
       <form v-on:submit.prevent="addTodo(newTodo)">

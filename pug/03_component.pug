@@ -30,7 +30,7 @@ html(lang='en')
               //- v-bind:todos簡寫
     
     script#todo-items-template(type="text/x-template")
-      .list-group
+      ul.list-group
         li.list-group-item(
           v-for="(todo, index) in todos"
           v-bind:class="{'completed' : todo.completed}") {{todo.title}}

@@ -22,14 +22,14 @@
             <div class="panel-heading">Welcome Vue js 2.0 Tutorial</div>
             <div class="panel-body">
               <h1>My todos {{todoCount}} 則</h1>
-              <div class="list-group">
+              <ul class="list-group">
                 <li v-for="(todo, index) in todos" v-bind:class="{'completed' : todo.completed}" class="list-group-item">{{todo.title}}
                   <button v-on:click="deleteTodo(index)" style="float:right" class="btn btn-sm btn-warning">Delete</button>
                   <button v-on:click="toggleCompletion(todo)" v-bind:class="[todo.completed ? 'btn-danger':'btn-success']" class="btn btn-sm pull-right">{{ todo.completed ? 'Undo':'Completed' }}
                   </button>
                   <div style="clear:both;"></div>
                 </li>
-              </div>
+              </ul>
               <form v-on:submit.prevent="addTodo(newTodo)">
                 <div class="form-group">
                   <input v-model="newTodo.title" type="text" placeholder="Add a new todo" class="form-control">
